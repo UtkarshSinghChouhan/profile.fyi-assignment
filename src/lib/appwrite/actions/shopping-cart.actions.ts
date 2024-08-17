@@ -7,7 +7,7 @@ import { ID } from "appwrite";
 const {DATABASE_ID, COLLECTION_ID} = process.env
 
 /**
- * Add product ti the cart
+ * Add product to the cart
  * @param product 
  */
 export const addToCart = async (product : IProduct) => {
@@ -58,7 +58,7 @@ export const updateCartItemQuantity = async (itemId: string, newQuantity: number
       );
 
         // Show toast
-      console.log('Cart item quantity updated:', updatedItem);
+      // console.log('Cart item quantity updated:', updatedItem);
     } catch (error) {
       console.error('Failed to update cart item quantity', error);
     }
