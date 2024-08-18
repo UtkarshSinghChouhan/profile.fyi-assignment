@@ -3,6 +3,7 @@ export enum Theme {
     DARK = 'DARK',
 }
   
-export enum NavLink {
-    
+export enum Order {
+    ASCENDING="asc",
+    DESCENDING="desc"
 }

@@ -12,13 +12,8 @@ export const FetchUtils = {
     },
 
     getCategories : async () => {
-       const data = await fetch(`https://dummyjson.com/products/categories`);
-
-       
+       const data = await fetch(`https://dummyjson.com/products/categories`); 
        const jsonData = await data.json()   
-       
-       console.log("jsonData", jsonData)
-   
-       return jsonData.products;
+       return jsonData;
     },
 }

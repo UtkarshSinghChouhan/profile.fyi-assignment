@@ -1,5 +1,4 @@
 "use client";
-import DynamicImage from "@/components/globals/dynamic-image";
 import ProductCard from "@/components/product/product-card";
 import ProductFilter from "@/components/product/product-filter";
 import { FetchUtils } from "@/lib/fetch-utils";
@@ -12,13 +11,18 @@ import { useSearchParams } from "next/navigation";
 import Button from "@/components/buttons/button";
 import Chip from "@/components/globals/chip";
 import Link from "next/link";
+import { Utils } from "@/lib/utils";
+import { SORT_BY } from "@/data/filter-data";
 
 const Products = () => {
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+
   const searchParams = useSearchParams();
   const filter = searchParams.get("filter");
-  const sortBy = searchParams.get("sortBy");
+  const sortBy = searchParams.get("sort_by");
+  const order = searchParams.get("order");
 
-  const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const sortFilter = SORT_BY.find((obj) => obj.order == order && obj.sortBy == sortBy);
   
   const { ref, inView } = useInView();
 
@@ -48,16 +52,7 @@ const Products = () => {
     }
   }, [fetchNextPage, inView]);
 
-
-
-  // Categories Data
-  const { data: categoriesData, isLoading : categoriesLoading } = useQuery({
-    queryFn: () => FetchUtils.getCategories(),
-    queryKey: ["categories-data"],
-
-  })
-
-  if (isLoading || categoriesLoading) {
+  if (isLoading) {
     return <ProductsSkeleton />;
   }
 
@@ -65,7 +60,7 @@ const Products = () => {
     <>
       {/* Products Page Header */}
       <div className="text-center pb-10 text-[50px] font-semibold w-full">
-        {filter ? filter : "ALL PRODUCTS"}
+        {filter ? Utils.cleanCategoryString(filter) : "ALL PRODUCTS"}
       </div>
 
       <div className="flex w-full">
@@ -82,14 +77,18 @@ const Products = () => {
 
           {/* Filters */}
           <div className="h-5 my-4 flex gap-4 items-center w-full">
+
             {filter && <Chip value={filter} />}
-            {sortBy && <Chip value={sortBy} />}
+
+            {sortFilter && <Chip value={sortFilter.label as string} />}
+
             {(filter || sortBy) && (
               <Link href={"/products"} className="group flex flex-col">
                 <span>Clear all</span>
                 <div className="h-[1px] transition-[width] bg-black w-0 group-hover:w-full" />
               </Link>
             )}
+
           </div>
 
           <div className="grid w-full grid-cols-pf-product-sm xl:grid-cols-pf-product justify-between gap-x-4 xl:gap-x-8 gap-y-9 xl:justify-between">
