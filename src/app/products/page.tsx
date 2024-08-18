@@ -51,12 +51,22 @@ const Products = () => {
 
   return (
     <>
-      <div className='bg-slate-400 h-28 w-full'></div>
+      <div className='text-center pb-10 text-[50px] font-semibold w-full'>
+        Best Seller
+      </div>
       <div className='flex w-full'>
 
         <ProductFilter />
 
         <div className='flex flex-col flex-1'>
+
+          <div className='pb-4 w-full'>
+            chip goes here
+
+            <button className='text-'>
+
+            </button>
+          </div>
 
           <div className='grid w-full grid-cols-fs-product justify-between gap-x-8 gap-y-9 lg:justify-between'>
 
@@ -81,18 +91,16 @@ const Products = () => {
               )
             })} 
 
-
-
-
             {/* Skeleton */}
             {isFetchingNextPage &&
               [... new Array(5)].map((_, idx) => (
                 <div key={idx} className='animate-pulse bg-slate-500 opacity-35 min-h-96'></div>
               ))
-            }           
+            }   
+
           </div>
 
-          <div ref={ref} className='bg-blue-500 min-h-5 w-full'></div>
+          <div ref={ref} className='bg-blue-500 min-h-5 w-full'/>
 
         </div>
 
