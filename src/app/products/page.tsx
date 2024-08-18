@@ -62,7 +62,7 @@ const Products = () => {
 
             {ALL_PRODUCTS?.map((product) => {
 
-              const {id, brand : brandName, title: productName, category, price, discountPercentage, images} = product
+              const {id, brand : brandName, title: productName, category, price, discountPercentage, images, rating} = product
 
               return (
                 <ProductCard 
@@ -74,8 +74,8 @@ const Products = () => {
                     category,
                     price,
                     discountPercentage, 
-                    productImage : images[0]
-                    
+                    productImage : images[0],
+                    rating
                   }}
                 />
               )

@@ -6,6 +6,7 @@ import { NAV_ITEMS } from '@/data/mock/nav-items'
 import CartWidget from './cart-widget'
 import Modal from './modal'
 import Icon from './icon';
+import Link from 'next/link';
 
 const Header = () => {
     const [modalOpen, setModalOpen] = useState<boolean>(false);
@@ -13,7 +14,7 @@ const Header = () => {
 
     return (
         <>
-            <header className='flex justify-center fixed z-10 top-0 left-0 right-0 h-[71px] bg-white border-b border-b-black'>
+            <header className='flex justify-center fixed z-10 top-0 left-0 right-0 h-[71px]  backdrop-blur-xl border-b border-b-pf-light-gray'>
                 <div className='w-full h-full max-w-7xl lg:max-w-8xl px-[11px] sm:px-10'>
 
                     <div className='flex h-full items-center justify-between '>
@@ -29,10 +30,10 @@ const Header = () => {
                             <div className='hidden xl:flex items-center gap-10'>
                                 {NAV_ITEMS.map((item, idx) => {
                                     return (
-                                        <div key={idx} className='flex flex-col group'>
-                                            <span className='text-[16px] font-normal'>{item.label}</span>
+                                        <Link href={item.link as string} key={idx} className='flex flex-col group'>
+                                            <span className='text-sm font-extralight'>{item.label}</span>
                                             <div className='w-0 group-hover:w-full h-[1px] bg-black transition-[width]' />
-                                        </div>
+                                        </Link>
                                     )
                                 })}
                             </div>

@@ -4,7 +4,7 @@ import ReduxProvider from "./_providers/redux-provider/redux-provider";
 import { cn } from "@/lib/utils";
 import Header from "@/components/header";
 import QueryProvider from "./_providers/query-provider/query-provider";
-import { poppins } from "./font";
+import { inter } from "./font";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <ReduxProvider>
         <QueryProvider>
-          <body className={cn(poppins.className, "flex flex-col min-h-screen min-w-screen")}>
+          <body className={cn(inter.className, "flex flex-col min-h-screen min-w-screen")}>
             <Header />
 
               <main className="flex h-full min-h-[calc(100vh-71px)] w-full flex-grow flex-col items-center justify-start">

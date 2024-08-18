@@ -13,7 +13,9 @@ const config: Config = {
           DEFAULT: '#E5E9EA',
         },
         'pf-image-bg': '#E5E9EA',
+        'pf-dark-gray' : '#616161',
         'pf-gray' : '#B2B2B2',
+        'pf-light-gray' : '#EBEBEB',
 
 
         // Dark Theme
@@ -31,8 +33,10 @@ const config: Config = {
       },
       fontSize: {
         'productName' : '18px',
-        'brandName' : ''
-
+        'value' : '15px'
+      },
+      padding: {
+        '2px': '2px',
       },
       maxWidth: {
         '8xl': '85rem' 

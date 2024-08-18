@@ -3,30 +3,37 @@ import { IOption } from "@/models/interfaces";
 export const NAV_ITEMS : Array<IOption> = [
     {
         label: "Shop",
-        value: ""
+        value: "",
+        link : "/"
     },
     {
         label: "Best Sellers",
-        value: ""
+        value: "",
+        link : "/"
     },
     {
         label: "Skin & Body Care",
-        value: ""
+        value: "",
+        link : "/"
     },
     {
         label: "Baby Care",
-        value: ""
+        value: "",
+        link : "/"
     },
     {
         label: "Hair Care",
-        value: ""
+        value: "",
+        link : "/"
     },
     {
         label: "Build Your Routine",
-        value: ""
+        value: "",
+        link : "/"
     },
     {
         label: "Track Order",
-        value: ""
+        value: "",
+        link : "/"
     },
 ]

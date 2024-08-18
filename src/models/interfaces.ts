@@ -6,10 +6,12 @@ export interface IProduct{
     price : number;
     discountPercentage : number;
     productImage : string;
-    quantity : number
+    quantity : number;
+    rating?: number;
 }
 
 export interface IOption {
     label: string;
     value: string;
+    link ?: string;
 }

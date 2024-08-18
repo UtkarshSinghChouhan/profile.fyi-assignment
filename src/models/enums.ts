@@ -3,3 +3,6 @@ export enum Theme {
     DARK = 'DARK',
 }
   
+export enum NavLink {
+    
+}

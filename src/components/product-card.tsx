@@ -1,38 +1,68 @@
-import { cn } from "@/lib/utils"
-import { IProduct } from "@/models/interfaces"
-import Image from "next/image"
+import { cn } from "@/lib/utils";
+import { IProduct } from "@/models/interfaces";
+import Image from "next/image";
+import Chip from "./chip";
+import StarRatings from "react-star-ratings";
+import Link from "next/link";
+import Button from "./Button";
 
-const ProductCard = (product : Partial<IProduct>) => {
+const ProductCard = (product: Partial<IProduct>) => {
+  const {
+    id,
+    brandName,
+    productName,
+    category,
+    price,
+    discountPercentage,
+    productImage,
+    rating,
+  } = product;
 
-    const {id, brandName, productName, category, price, discountPercentage, productImage} = product
+  return (
+    <div>
+      {/* Product Image */}
+      <div className={cn("w-full h-96 relative bg-pf-image-bg")}>
+        <Image
+          src={productImage as string}
+          alt={id as string}
+          className="object-cover"
+          fill
+          loading="lazy"
+        />
+      </div>
 
+        {/* Product Name */}
+        <Link href={`/products/${id}`} className="flex flex-col group w-fit">
+            <h1
+            className="text-productName font-bold line-clamp-1"
+            title={productName}
+            >
+            {productName}
+            </h1>
+            <div className="w-0 group-hover:w-full h-[1px] bg-black transition-[width]" />
+        </Link>
 
-    return (
-        <div>
+      <h2 className="text-pf-dark-gray font-medium flex gap-2">
+        {brandName} <Chip value={category as string} />
+      </h2>
 
-            {/* Product Image */}
-            <div className={cn("w-full h-96 relative bg-pf-image-bg")}>
-                <Image 
-                    src={productImage as string}
-                    alt={id as string}
-                    className="object-cover" 
-                    fill 
-                    loading="lazy" 
-                />
-            </div>
+      {/* Rating */}
+      <StarRatings
+        rating={rating}
+        starRatedColor="#000000"
+        starEmptyColor="#EBEBEB"
+        numberOfStars={5}
+        starDimension={`20px`}
+        starSpacing={`3px`}
+        name="rating"
+      />
 
+      <p>{price}</p>
+      <p>{discountPercentage}</p>
 
-            {/* product Name */}
+      <Button variant="filled" size="full" className="mt-10">{`Add to cart`}</Button>
+    </div>
+  );
+};
 
-            <h1 className="text-productName font-bold">{productName}</h1>
-            <h2 className="text-pf-gray font-semibold">{brandName}</h2>
-            <p>{category}</p>
-
-            <p>{price}</p>
-            <p>{discountPercentage}</p>
-
-        </div>
-    )
-}
-
-export default ProductCard
+export default ProductCard;
