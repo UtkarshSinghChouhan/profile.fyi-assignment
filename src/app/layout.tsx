@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import ReduxProvider from "./_providers/redux-provider/redux-provider";
 import { cn } from "@/lib/utils";
-import Header from "@/components/header";
+import Header from "@/components/globals/header";
 import QueryProvider from "./_providers/query-provider/query-provider";
 import { inter } from "./font";
 

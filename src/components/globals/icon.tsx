@@ -1,4 +1,4 @@
-import { IconVariant } from "../models/types";
+import { IconVariant } from "../../models/types";
 
 
 interface IIcon {
@@ -24,6 +24,27 @@ const getIcon = (icon: IconVariant) => {
     case 'menu':
       return (
         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="black"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
+      );
+
+    case 'loader':
+      return (
+        <svg width="100%" height="100%" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="#fff">
+          <g fill="none" fillRule="evenodd">
+            <g transform="translate(1 1)" strokeWidth="2">
+              <circle strokeOpacity=".5" cx="18" cy="18" r="18" />
+              <path d="M36 18c0-9.94-8.06-18-18-18">
+                <animateTransform
+                  attributeName="transform"
+                  type="rotate"
+                  from="0 18 18"
+                  to="360 18 18"
+                  dur="1s"
+                  repeatCount="indefinite"
+                />
+              </path>
+            </g>
+          </g>
+        </svg>
       );
 
     default:

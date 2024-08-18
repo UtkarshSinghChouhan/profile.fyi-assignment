@@ -1,113 +1,131 @@
 "use client";
-import DynamicImage from '@/components/dynamic-image';
-import ProductCard from '@/components/product-card';
-import ProductFilter from '@/components/product-filter'
-import { FetchUtils } from '@/lib/fetch-utils';
-import { useInfiniteQuery } from '@tanstack/react-query';
-import { useInView } from 'react-intersection-observer';
-import { useEffect, useMemo } from 'react';
+import DynamicImage from "@/components/globals/dynamic-image";
+import ProductCard from "@/components/product/product-card";
+import ProductFilter from "@/components/product/product-filter";
+import { FetchUtils } from "@/lib/fetch-utils";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { useInView } from "react-intersection-observer";
+import { useEffect, useMemo, useState } from "react";
+import ProductCardSkeleton from "@/components/product/static/product-card-skeleton";
+import ProductsSkeleton from "@/components/product/static/products-skeleton";
+import { useSearchParams } from "next/navigation";
+import Button from "@/components/buttons/button";
+import Chip from "@/components/globals/chip";
+import Link from "next/link";
 
 const Products = () => {
+  const searchParams = useSearchParams();
+  const filter = searchParams.get("filter");
+  const sortBy = searchParams.get("sortBy");
 
-  const {ref, inView} = useInView()
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+  
+  const { ref, inView } = useInView();
 
+  const { data, isLoading, fetchNextPage, isFetchingNextPage } =
+    useInfiniteQuery({
+      queryFn: FetchUtils.getProductsData,
+      queryKey: ["users"],
+      initialPageParam: 0,
+      getNextPageParam: (lastPage, allPage, lastPageParam) => {
+        if (lastPage.length === 0) {
+          return null;
+        }
 
-  const {data, isLoading, fetchNextPage, isFetchingNextPage } = useInfiniteQuery({
-    queryFn: FetchUtils.getProductsData,
-    queryKey : ['users'],
-    initialPageParam : 0,
-    getNextPageParam : (lastPage, allPage, lastPageParam) =>  {
-      if(lastPage.length === 0){
-        return null;
-      }
-      
-      return lastPageParam + 1;
-    }
-  })
-
+        return lastPageParam + 1;
+      },
+    });
 
   const ALL_PRODUCTS = useMemo(
-    () => data?.pages.flatMap(user => user),
+    () => data?.pages.flatMap((user) => user),
     [data]
-  )
-
+  );
 
   // Whenever the Intersection Occurs Fetch new Data
   useEffect(() => {
-
-    if(inView){
-      fetchNextPage()
+    if (inView) {
+      fetchNextPage();
     }
+  }, [fetchNextPage, inView]);
 
-  },[fetchNextPage, inView])
-
-
-
-
-  if(isLoading){
-    return <>Loading...</>
+  if (isLoading) {
+    return <ProductsSkeleton />;
   }
-
 
   return (
     <>
-      <div className='text-center pb-10 text-[50px] font-semibold w-full'>
-        Best Seller
+      {/* Products Page Header */}
+      <div className="text-center pb-10 text-[50px] font-semibold w-full">
+        {filter ? filter : "ALL PRODUCTS"}
       </div>
-      <div className='flex w-full'>
 
-        <ProductFilter />
+      <div className="flex w-full">
+        <ProductFilter modalOpen={modalOpen} setModalOpen={setModalOpen} />
 
-        <div className='flex flex-col flex-1'>
+        <div className="flex flex-col flex-1">
+          <Button
+            className="xl:hidden"
+            variant="outlined"
+            onClick={() => setModalOpen(true)}
+          >
+            Set Filter
+          </Button>
 
-          <div className='pb-4 w-full'>
-            chip goes here
-
-            <button className='text-'>
-
-            </button>
+          <div className="h-5 my-4 flex gap-4 items-center w-full">
+            {filter && <Chip value={filter} />}
+            {sortBy && <Chip value={sortBy} />}
+            {(filter || sortBy) && (
+              <Link href={"/products"} className="group flex flex-col">
+                <span>Clear all</span>
+                <div className="h-[1px] transition-[width] bg-black w-0 group-hover:w-full" />
+              </Link>
+            )}
+                      
           </div>
 
-          <div className='grid w-full grid-cols-fs-product justify-between gap-x-8 gap-y-9 lg:justify-between'>
-
+          <div className="grid w-full grid-cols-pf-product-sm xl:grid-cols-pf-product justify-between gap-x-4 xl:gap-x-8 gap-y-9 xl:justify-between">
             {ALL_PRODUCTS?.map((product) => {
-
-              const {id, brand : brandName, title: productName, category, price, discountPercentage, images, rating} = product
+              const {
+                id,
+                brand: brandName,
+                title: productName,
+                category,
+                price,
+                discountPercentage,
+                images,
+                rating,
+              } = product;
 
               return (
-                <ProductCard 
+                <ProductCard
                   key={id}
                   {...{
-                    id, 
+                    id: id.toString(),
                     brandName,
                     productName,
                     category,
                     price,
-                    discountPercentage, 
-                    productImage : images[0],
-                    rating
+                    discountPercentage,
+                    productImage: images[0],
+                    rating,
                   }}
                 />
-              )
-            })} 
+              );
+            })}
 
             {/* Skeleton */}
             {isFetchingNextPage &&
-              [... new Array(5)].map((_, idx) => (
-                <div key={idx} className='animate-pulse bg-slate-500 opacity-35 min-h-96'></div>
-              ))
-            }   
-
+              [...new Array(5)].map((_, idx) => (
+                <ProductCardSkeleton key={idx} />
+              ))}
           </div>
 
-          <div ref={ref} className='bg-blue-500 min-h-5 w-full'/>
-
+          {/* Intersection collider */}
+          <div ref={ref} className="min-h-5 w-full" />
         </div>
-
-
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Products
+export default Products;

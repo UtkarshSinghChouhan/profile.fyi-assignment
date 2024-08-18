@@ -42,8 +42,9 @@ const config: Config = {
         '8xl': '85rem' 
       },
       gridTemplateColumns: {
-        'fs-product': 'repeat(auto-fill, 18.75rem)',
-      },
+        'pf-product': 'repeat(auto-fill, 18.75rem)',
+        'pf-product-sm': 'repeat(auto-fill, 12.25rem)',
+      },
       gridTemplateRows: {
         8: 'repeat(8, minmax(0, 1fr))',
       },

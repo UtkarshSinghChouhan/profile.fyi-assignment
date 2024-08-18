@@ -1,20 +1,8 @@
 import { cn } from '@/lib/utils';
-import { ButtonVariant } from '@/models/types';
+import { IButton } from '@/models/interfaces';
 import { forwardRef } from 'react';
 
-interface IButton {
-  children?: any;
-  onClick?: Function;
-  onBlur?: Function;
-  isSubmit?: boolean;
-  form?: string;
-  disabled?: boolean;
-  variant: ButtonVariant;
-  padding?: 0 | 2 | 2.5 | 3;
-  size?: 'auto' | 'full';
-  weight?: 'normal' | 'medium';
-  className ?: string;
-}
+
 
 const Button = forwardRef<HTMLButtonElement, IButton>(
   (
@@ -47,7 +35,7 @@ const Button = forwardRef<HTMLButtonElement, IButton>(
 
             // disabled
             disabled
-              ? `cursor-not-allowed`
+              ? `cursor-not-allowed bg-pf-gray text-white`
               : `cursor-pointer`,
 
             // variant - filled

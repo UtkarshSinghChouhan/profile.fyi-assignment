@@ -19,8 +19,6 @@ export const addToCart = async (product : IProduct) => {
         {...product}
       );
 
-    //   Show toast
-      console.log('Product added to cart:', promise);
     } catch (error) {
       console.error('Failed to add product to cart', error);
     }
