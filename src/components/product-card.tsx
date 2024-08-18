@@ -4,7 +4,8 @@ import Image from "next/image";
 import Chip from "./chip";
 import StarRatings from "react-star-ratings";
 import Link from "next/link";
-import Button from "./Button";
+import Button from "./button";
+
 
 const ProductCard = (product: Partial<IProduct>) => {
   const {
@@ -31,6 +32,9 @@ const ProductCard = (product: Partial<IProduct>) => {
         />
       </div>
 
+        {/* Product Description */}
+      <div className=" pt-5">
+
         {/* Product Name */}
         <Link href={`/products/${id}`} className="flex flex-col group w-fit">
             <h1
@@ -42,25 +46,28 @@ const ProductCard = (product: Partial<IProduct>) => {
             <div className="w-0 group-hover:w-full h-[1px] bg-black transition-[width]" />
         </Link>
 
-      <h2 className="text-pf-dark-gray font-medium flex gap-2">
-        {brandName} <Chip value={category as string} />
-      </h2>
+        <h2 className="text-pf-dark-gray text-sm font-medium flex gap-2 items-center mt-3">
+            {brandName} <Chip value={category as string} />
+        </h2>
 
-      {/* Rating */}
-      <StarRatings
-        rating={rating}
-        starRatedColor="#000000"
-        starEmptyColor="#EBEBEB"
-        numberOfStars={5}
-        starDimension={`20px`}
-        starSpacing={`3px`}
-        name="rating"
-      />
+        {/* Rating */}
+        <StarRatings
+            rating={rating}
+            starRatedColor="#000000"
+            starEmptyColor="#EBEBEB"
+            numberOfStars={5}
+            starDimension={`15px`}
+            starSpacing={`3px`}
+            name="rating"
+        />
 
-      <p>{price}</p>
-      <p>{discountPercentage}</p>
+        <p>{price}</p>
+        <p>{discountPercentage}</p>
 
-      <Button variant="filled" size="full" className="mt-10">{`Add to cart`}</Button>
+        <Button variant="filled" size="full" className="mt-10">{`Add to cart`}</Button>
+
+      </div>
+
     </div>
   );
 };

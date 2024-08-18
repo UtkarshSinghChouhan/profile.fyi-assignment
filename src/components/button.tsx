@@ -35,9 +35,6 @@ const Button = forwardRef<HTMLButtonElement, IButton>(
     if (onClick) {
       inputProps.onClick = onClick;
     }
-    if(className){
-        inputProps.className = className
-    }
 
     return (
       <>
@@ -57,7 +54,7 @@ const Button = forwardRef<HTMLButtonElement, IButton>(
             !disabled && variant === 'filled' && 'bg-black text-white',
 
             // variant - outlined
-            !disabled && variant === 'outlined' && 'border-fs-warning-yellow bg-fs-warning-yellow',
+            !disabled && variant === 'outlined' && 'border-black text-black',
 
             // padding - 0
             padding === 0 && `pb-0 pl-0 pr-0 pt-0`,
@@ -75,9 +72,13 @@ const Button = forwardRef<HTMLButtonElement, IButton>(
             size === 'auto' ? 'w-max' : 'w-full',
 
             // font weight
-            weight === 'medium' ? 'font-medium' : 'font-normal'
+            weight === 'medium' ? 'font-medium' : 'font-normal',
+
+            // Custom Classes
+            className
           )}
           {...inputProps}
+          
         >
           {children}
         </button>
