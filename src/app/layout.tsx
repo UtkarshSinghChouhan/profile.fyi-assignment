@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import Header from "@/components/globals/header";
 import QueryProvider from "./_providers/query-provider/query-provider";
 import { inter } from "./font";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -31,6 +32,8 @@ export default function RootLayout({
 
               </div>
 
+              <Toaster />
+              
             </main>
           </body>
         </QueryProvider>

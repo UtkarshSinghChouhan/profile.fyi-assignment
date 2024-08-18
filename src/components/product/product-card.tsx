@@ -8,6 +8,7 @@ import { addToCart } from "@/lib/appwrite/actions/shopping-cart.actions";
 import ButtonLoader from "../buttons/button-loader";
 import { useState } from "react";
 import ProductPrice from "./product-price";
+import toast from "react-hot-toast";
 
 
 const ProductCard = (product: Partial<IProduct>) => {
@@ -46,10 +47,9 @@ const ProductCard = (product: Partial<IProduct>) => {
     }catch(err){
         console.error(err)
     }finally{
-        setBtnLoader(false)
+      setBtnLoader(false)
+      toast.success("Item Added To Cart!", {position: "bottom-center"});
     }
-
-
   }
 
   return (
