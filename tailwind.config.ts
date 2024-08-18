@@ -31,6 +31,9 @@ const config: Config = {
         'pf-darktheme-border' : '#383B3B',
         'pf-darktheme-border-light' : '#575b5b',
       },
+      boxShadow:{
+        'darkTheme-shadow' : '0 0 8px 0 rgba(255, 255, 255, 0.05)',  //for tooltip, pop-overs
+      },
       fontSize: {
         'productName' : '18px',
         'value' : '15px'
@@ -44,7 +47,7 @@ const config: Config = {
       gridTemplateColumns: {
         'pf-product': 'repeat(auto-fill, 18.75rem)',
         'pf-product-sm': 'repeat(auto-fill, 12.25rem)',
-      },
+      },
       gridTemplateRows: {
         8: 'repeat(8, minmax(0, 1fr))',
       },

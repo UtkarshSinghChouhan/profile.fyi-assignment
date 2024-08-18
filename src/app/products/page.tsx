@@ -11,8 +11,8 @@ import { useSearchParams } from "next/navigation";
 import Button from "@/components/buttons/button";
 import Chip from "@/components/globals/chip";
 import Link from "next/link";
-import { Utils } from "@/lib/utils";
 import { SORT_BY } from "@/data/filter-data";
+import ProductHeader from "@/components/product/product-header";
 
 const Products = () => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
@@ -59,9 +59,10 @@ const Products = () => {
   return (
     <>
       {/* Products Page Header */}
-      <div className="text-center pb-10 text-[50px] font-semibold w-full">
+      {/* <div className="text-center pb-10 text-[50px] font-semibold w-full">
         {filter ? Utils.cleanCategoryString(filter) : "ALL PRODUCTS"}
-      </div>
+      </div> */}
+      <ProductHeader filter={filter as string} />
 
       <div className="flex w-full">
         <ProductFilter modalOpen={modalOpen} setModalOpen={setModalOpen} />

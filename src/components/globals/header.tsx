@@ -14,7 +14,7 @@ const Header = () => {
 
     return (
         <>
-            <header className='flex justify-center fixed z-10 top-0 left-0 right-0 h-[71px]  backdrop-blur-xl border-b border-b-pf-light-gray'>
+            <header className='flex justify-center fixed z-10 top-0 left-0 right-0 h-[71px]  backdrop-blur-xl border-b border-b-pf-light-gray dark:border-b-pf-darktheme-border dark:bg-pf-darktheme-bg'>
                 <div className='w-full h-full max-w-7xl lg:max-w-8xl px-[11px] sm:px-10'>
 
                     <div className='flex h-full items-center justify-between '>
@@ -31,8 +31,8 @@ const Header = () => {
                                 {NAV_ITEMS.map((item, idx) => {
                                     return (
                                         <Link href={item.link as string} key={idx} className='flex flex-col group'>
-                                            <span className='text-sm font-extralight'>{item.label}</span>
-                                            <div className='w-0 group-hover:w-full h-[1px] bg-black transition-[width]' />
+                                            <span className='text-sm font-extralight dark:text-pf-darktheme-text dark:group-hover:text-pf-darktheme-text-header'>{item.label}</span>
+                                            <div className='w-0 group-hover:w-full h-[1px] bg-black dark:bg-pf-darktheme-text dark:group-hover:bg-pf-darktheme-text-header transition-[width]' />
                                         </Link>
                                     )
                                 })}

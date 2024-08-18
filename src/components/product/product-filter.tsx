@@ -97,6 +97,7 @@ const ProductFilter = ({ modalOpen, setModalOpen }: IProductFilter) => {
           {[...new Array(10)].map((_, idx) => {
             return (
               <button
+                key={idx}
                 onClick={() => {
                   router.push(
                     "?" + createQueryString({ filter: idx.toString() })

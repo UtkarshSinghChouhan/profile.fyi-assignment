@@ -7,6 +7,7 @@ import QueryProvider from "./_providers/query-provider/query-provider";
 import { inter } from "./font";
 import { Toaster } from "react-hot-toast";
 import ThemeSwitch from "@/components/globals/theme-switch";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -22,27 +23,30 @@ export default function RootLayout({
     <html lang="en">
       <ReduxProvider>
         <QueryProvider>
-          <body className={cn(inter.className, "relative flex flex-col min-h-screen min-w-screen custom-scroller")}>
-            <Header />
+          <Suspense>
+            <body className={cn(inter.className, "relative dark:bg-pf-darktheme-bg-dark flex flex-col min-h-screen min-w-screen custom-scroller")}>
+              <Header />
 
-              <main className="flex h-full min-h-[calc(100vh-71px)] w-full flex-grow flex-col items-center justify-start">
+                <main className="flex h-full min-h-[calc(100vh-71px)] w-full flex-grow flex-col items-center justify-start">
 
-              <div className="flex w-full flex-grow flex-col items-center justify-start p-[11px_11px_40px] sm:py-8 max-w-7xl lg:max-w-8xl sm:px-10">
+                <div className="flex w-full flex-grow flex-col items-center justify-start p-[11px_11px_40px] sm:py-8 max-w-7xl lg:max-w-8xl sm:px-10">
 
-                {children}
+                  {children}
 
+                </div>
+
+                <Toaster />
+                
+              </main>
+
+              {/* Theme Switcher */}
+              <div className="z-50 fixed bottom-5 right-5">
+                <ThemeSwitch />
               </div>
 
-              <Toaster />
-              
-            </main>
+            </body>
 
-            {/* Theme Switcher */}
-            <div className="z-50 fixed bottom-5 right-5">
-              <ThemeSwitch />
-            </div>
-
-          </body>
+          </Suspense>
         </QueryProvider>
       </ReduxProvider>
     </html>

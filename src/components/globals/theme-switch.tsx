@@ -34,7 +34,7 @@ const ThemeSwitch = () => {
 
   return (
     <button 
-        className="ripple flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-fs-bg-hover dark:bg-fs-darktheme-bg hover:bg-fs-bg-selected dark:hover:bg-fs-darktheme-bg-light dark:shadow-darkTheme-shadow border-2 border-fs-dark-black dark:border-fs-darktheme-border-light" 
+        className="ripple flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-pf-light-gray dark:bg-pf-darktheme-bg hover:bg-pf-bg-selected dark:hover:bg-pf-darktheme-bg-light dark:shadow-darkTheme-shadow border-2 border-pf-dark-gray dark:border-pf-darktheme-border-light" 
         onClick={toggleTheme}
     >
       <div className="shrink-0">           
