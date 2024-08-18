@@ -4,7 +4,12 @@ import { ThemeVariant } from '@/models/types';
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
-const initialState  = {
+
+interface IThemeSlice {
+  theme : Theme
+}
+
+const initialState : IThemeSlice = {
   theme: Theme.LIGHT,
 };
 

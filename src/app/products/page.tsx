@@ -26,8 +26,8 @@ const Products = () => {
   
   const { ref, inView } = useInView();
 
-    // Products Data
-  const { data, isLoading, fetchNextPage, isFetchingNextPage } =useInfiniteQuery({
+  // Products Data
+  const { data, isLoading, fetchNextPage, isFetchingNextPage } = useInfiniteQuery({
       queryFn: FetchUtils.getProductsData,
       queryKey: ["products"],
       initialPageParam: 0,

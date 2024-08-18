@@ -30,13 +30,15 @@ export const addToCart = async (product : IProduct) => {
  */
 export const fetchCartItems = async () => {
     try {
-      const promise = await databases.listDocuments(
+      const res = await databases.listDocuments(
         DATABASE_ID as string,
         COLLECTION_ID as string
       );
-      return promise.documents
+
+      return res.documents
     } catch (error) {
-      console.error('Failed to fetch cart items', error);
+      console.log('Failed to fetch cart items', error);
+      return []
     }
 };
 

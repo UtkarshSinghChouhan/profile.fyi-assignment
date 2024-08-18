@@ -6,6 +6,7 @@ import Header from "@/components/globals/header";
 import QueryProvider from "./_providers/query-provider/query-provider";
 import { inter } from "./font";
 import { Toaster } from "react-hot-toast";
+import ThemeSwitch from "@/components/globals/theme-switch";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -21,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <ReduxProvider>
         <QueryProvider>
-          <body className={cn(inter.className, "flex flex-col min-h-screen min-w-screen custom-scroller")}>
+          <body className={cn(inter.className, "relative flex flex-col min-h-screen min-w-screen custom-scroller")}>
             <Header />
 
               <main className="flex h-full min-h-[calc(100vh-71px)] w-full flex-grow flex-col items-center justify-start">
@@ -35,6 +36,12 @@ export default function RootLayout({
               <Toaster />
               
             </main>
+
+            {/* Theme Switcher */}
+            <div className="z-50 fixed bottom-5 right-5">
+              <ThemeSwitch />
+            </div>
+
           </body>
         </QueryProvider>
       </ReduxProvider>

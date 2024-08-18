@@ -9,7 +9,7 @@ export interface IProduct{
     discountPercentage : number;
     productImage : string;
     quantity : number;
-    rating?: number;
+    rating: number;
 }
 
 export interface IOption {
