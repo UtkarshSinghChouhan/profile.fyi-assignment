@@ -8,16 +8,37 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      colors: {
+        primary: {
+          DEFAULT: '#E5E9EA',
+        },
+        'pf-image-bg': '#E5E9EA',
+        'pf-gray' : '#B2B2B2',
+
+
+        // Dark Theme
+        'pf-darktheme-text' : '#B0B3B8', 
+
+        'pf-darktheme-text-header' : '#ffffff',
+
+        'pf-darktheme-bg-dark' : '#18191B',
+        'pf-darktheme-bg' : '#242526',
+        'pf-darktheme-bg-light' : '#3B3B3D',
+        'pf-darktheme-bg-extra-light' : '#4e4f50',    //hover-state
+
+        'pf-darktheme-border' : '#383B3B',
+        'pf-darktheme-border-light' : '#575b5b',
+      },
+      fontSize: {
+        'productName' : '18px',
+        'brandName' : ''
+
       },
       maxWidth: {
         '8xl': '85rem' 
       },
       gridTemplateColumns: {
-        'fs-product': 'repeat(auto-fill, 12.75rem)',
+        'fs-product': 'repeat(auto-fill, 18.75rem)',
       },
       gridTemplateRows: {
         8: 'repeat(8, minmax(0, 1fr))',

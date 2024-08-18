@@ -4,6 +4,7 @@ import "./globals.css";
 import ReduxProvider from "./_providers/redux-provider/redux-provider";
 import { cn } from "@/lib/utils";
 import Header from "@/components/header";
+import QueryProvider from "./_providers/query-provider/query-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,20 +21,22 @@ export default function RootLayout({
   return (
     <html lang="en">
       <ReduxProvider>
-        <body className={cn(inter.className, "flex flex-col min-h-screen min-w-screen")}>
-          <Header />
+        <QueryProvider>
+          <body className={cn(inter.className, "flex flex-col min-h-screen min-w-screen")}>
+            <Header />
 
-          {/* <main className="flex flex-1 flex-col items-center "> */}
-          <main className="flex h-full min-h-[calc(100vh-71px)] w-full flex-grow flex-col items-center justify-start">
+            {/* <main className="flex flex-1 flex-col items-center "> */}
+            <main className="flex h-full min-h-[calc(100vh-71px)] w-full flex-grow flex-col items-center justify-start">
 
-            <div className="flex w-full flex-grow flex-col items-center justify-start p-[11px_11px_40px] sm:py-8 max-w-7xl lg:max-w-8xl sm:px-10 lg:px-20">
+              <div className="flex w-full flex-grow flex-col items-center justify-start p-[11px_11px_40px] sm:py-8 max-w-7xl lg:max-w-8xl sm:px-10 lg:px-20">
 
-              {children}
+                {children}
 
-            </div>
+              </div>
 
-          </main>
-        </body>
+            </main>
+          </body>
+        </QueryProvider>
       </ReduxProvider>
     </html>
   );
