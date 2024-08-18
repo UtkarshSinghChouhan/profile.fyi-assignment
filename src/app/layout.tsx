@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <ReduxProvider>
         <QueryProvider>
-          <body className={cn(inter.className, "flex flex-col min-h-screen min-w-screen")}>
+          <body className={cn(inter.className, "flex flex-col min-h-screen min-w-screen custom-scroller")}>
             <Header />
 
               <main className="flex h-full min-h-[calc(100vh-71px)] w-full flex-grow flex-col items-center justify-start">

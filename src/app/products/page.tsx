@@ -3,7 +3,7 @@ import DynamicImage from "@/components/globals/dynamic-image";
 import ProductCard from "@/components/product/product-card";
 import ProductFilter from "@/components/product/product-filter";
 import { FetchUtils } from "@/lib/fetch-utils";
-import { useInfiniteQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useMemo, useState } from "react";
 import ProductCardSkeleton from "@/components/product/static/product-card-skeleton";
@@ -22,10 +22,10 @@ const Products = () => {
   
   const { ref, inView } = useInView();
 
-  const { data, isLoading, fetchNextPage, isFetchingNextPage } =
-    useInfiniteQuery({
+    // Products Data
+  const { data, isLoading, fetchNextPage, isFetchingNextPage } =useInfiniteQuery({
       queryFn: FetchUtils.getProductsData,
-      queryKey: ["users"],
+      queryKey: ["products"],
       initialPageParam: 0,
       getNextPageParam: (lastPage, allPage, lastPageParam) => {
         if (lastPage.length === 0) {
@@ -34,7 +34,7 @@ const Products = () => {
 
         return lastPageParam + 1;
       },
-    });
+  });
 
   const ALL_PRODUCTS = useMemo(
     () => data?.pages.flatMap((user) => user),
@@ -48,7 +48,16 @@ const Products = () => {
     }
   }, [fetchNextPage, inView]);
 
-  if (isLoading) {
+
+
+  // Categories Data
+  const { data: categoriesData, isLoading : categoriesLoading } = useQuery({
+    queryFn: () => FetchUtils.getCategories(),
+    queryKey: ["categories-data"],
+
+  })
+
+  if (isLoading || categoriesLoading) {
     return <ProductsSkeleton />;
   }
 
@@ -71,6 +80,7 @@ const Products = () => {
             Set Filter
           </Button>
 
+          {/* Filters */}
           <div className="h-5 my-4 flex gap-4 items-center w-full">
             {filter && <Chip value={filter} />}
             {sortBy && <Chip value={sortBy} />}
@@ -80,7 +90,6 @@ const Products = () => {
                 <div className="h-[1px] transition-[width] bg-black w-0 group-hover:w-full" />
               </Link>
             )}
-                      
           </div>
 
           <div className="grid w-full grid-cols-pf-product-sm xl:grid-cols-pf-product justify-between gap-x-4 xl:gap-x-8 gap-y-9 xl:justify-between">
