@@ -14,17 +14,34 @@ const Modal = ({ children, modalOpen, setModalOpen, title }: IModal) => {
         visible: {
             opacity: 1,
             transition: {
-                when: "beforeChildren",
-                duration: 0.3,
-                delayChildren: 0.4
+                duration: 0.3,  // Sync the duration
+                ease: "easeInOut"
             }
         },
         hidden: {
             opacity: 0,
             transition: {
-                when: "afterChildren",
-                duration: 0.3,
-                delay: 0.4
+                duration: 0.3,  // Sync the duration
+                ease: "easeInOut"
+            }
+        }
+    };
+
+    const modalVariants = {
+        visible: {
+            opacity: 1,
+            scale: 1,
+            transition: {
+                duration: 0.3,  // Sync the duration
+                ease: "easeInOut"
+            }
+        },
+        hidden: {
+            opacity: 0,
+            scale: 0.95,
+            transition: {
+                duration: 0.3,  // Sync the duration
+                ease: "easeInOut"
             }
         }
     };
@@ -41,10 +58,7 @@ const Modal = ({ children, modalOpen, setModalOpen, title }: IModal) => {
                 >
                     <motion.div
                         className="flex flex-col max-w-[500px] w-[90%] max-h-[90%] bg-white rounded-[5px]"
-                        initial={{ y: "100vh" }}
-                        animate={{ y: 0 }}
-                        exit={{ y: "100vh" }}
-                        transition={{ duration: 0.5 }}
+                        variants={modalVariants}
                     >
                         <div className='w-full p-2 shadow-lg flex justify-between'>
                             <span>{title}</span>
@@ -62,4 +76,4 @@ const Modal = ({ children, modalOpen, setModalOpen, title }: IModal) => {
     )
 }
 
-export default Modal
+export default Modal;
