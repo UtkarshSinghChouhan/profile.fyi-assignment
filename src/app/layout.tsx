@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import ReduxProvider from "./_providers/redux-provider/redux-provider";
 import { cn } from "@/lib/utils";
 import Header from "@/components/header";
 import QueryProvider from "./_providers/query-provider/query-provider";
-
-const inter = Inter({ subsets: ["latin"] });
+import { poppins } from "./font";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -22,13 +20,12 @@ export default function RootLayout({
     <html lang="en">
       <ReduxProvider>
         <QueryProvider>
-          <body className={cn(inter.className, "flex flex-col min-h-screen min-w-screen")}>
+          <body className={cn(poppins.className, "flex flex-col min-h-screen min-w-screen")}>
             <Header />
 
-            {/* <main className="flex flex-1 flex-col items-center "> */}
-            <main className="flex h-full min-h-[calc(100vh-71px)] w-full flex-grow flex-col items-center justify-start">
+              <main className="flex h-full min-h-[calc(100vh-71px)] w-full flex-grow flex-col items-center justify-start">
 
-              <div className="flex w-full flex-grow flex-col items-center justify-start p-[11px_11px_40px] sm:py-8 max-w-7xl lg:max-w-8xl sm:px-10 lg:px-20">
+              <div className="flex w-full flex-grow flex-col items-center justify-start p-[11px_11px_40px] sm:py-8 max-w-7xl lg:max-w-8xl sm:px-10">
 
                 {children}
 

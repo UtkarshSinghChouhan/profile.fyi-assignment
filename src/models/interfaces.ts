@@ -8,3 +8,8 @@ export interface IProduct{
     productImage : string;
     quantity : number
 }
+
+export interface IOption {
+    label: string;
+    value: string;
+}

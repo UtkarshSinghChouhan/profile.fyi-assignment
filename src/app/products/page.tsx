@@ -4,8 +4,8 @@ import ProductCard from '@/components/product-card';
 import ProductFilter from '@/components/product-filter'
 import { FetchUtils } from '@/lib/fetch-utils';
 import { useInfiniteQuery } from '@tanstack/react-query';
-import React, { useEffect, useMemo } from 'react'
 import { useInView } from 'react-intersection-observer';
+import { useEffect, useMemo } from 'react';
 
 const Products = () => {
 
