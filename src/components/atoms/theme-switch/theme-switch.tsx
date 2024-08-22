@@ -2,11 +2,11 @@
 
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import Icon from "./icon"
 import { RootState } from "@/store/store"
 import { Theme } from "@/models/enums"
 import { setTheme } from "@/store/slices/theme-slice"
 import { updateTheme } from "@/lib/theme-utils"
+import Icon from "../icon/icon"
 
 const ThemeSwitch = () => {
   const theme = useSelector((state: RootState) => state.theme.theme);

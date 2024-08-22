@@ -1,18 +1,18 @@
 "use client";
-import ProductCard from "@/components/product/product-card";
-import ProductFilter from "@/components/product/product-filter";
 import { FetchUtils } from "@/lib/fetch-utils";
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useMemo, useState } from "react";
-import ProductCardSkeleton from "@/components/product/static/product-card-skeleton";
-import ProductsSkeleton from "@/components/product/static/products-skeleton";
+import ProductCardSkeleton from "@/components/organisms/product/static/product-card-skeleton";
+import ProductsSkeleton from "@/components/organisms/product/static/products-skeleton";
 import { useSearchParams } from "next/navigation";
-import Button from "@/components/buttons/button";
-import Chip from "@/components/globals/chip";
+import Button from "@/components/atoms/button/button";
+import Chip from "@/components/atoms/chip/chip";
 import Link from "next/link";
 import { SORT_BY } from "@/data/filter-data";
-import ProductHeader from "@/components/product/product-header";
+import ProductHeader from "@/components/organisms/product/product-header";
+import ProductFilter from "@/components/organisms/product/product-filter";
+import ProductCard from "@/components/organisms/product/product-card";
 
 const Products = () => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);

@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react'
 import { motion, AnimatePresence } from "framer-motion";
-import Icon from './icon';
+import Icon from '@/components/atoms/icon/icon';
 
 
 interface IModal {

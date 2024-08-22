@@ -1,12 +1,12 @@
 "use client";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useCallback } from "react";
-import Modal from "../globals/modal";
 import { FetchUtils } from "@/lib/fetch-utils";
 import { useQuery } from "@tanstack/react-query";
 import { IOption } from "@/models/interfaces";
 import { SORT_BY } from "@/data/filter-data";
 import { cn } from "@/lib/utils";
+import Modal from "@/components/molecules/modal/modal";
 
 interface IProductFilter {
   modalOpen: boolean;

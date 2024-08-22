@@ -1,14 +1,16 @@
 import { cn } from "@/lib/utils";
 import { IProduct } from "@/models/interfaces";
 import Image from "next/image";
-import Chip from "../globals/chip";
 import StarRatings from "react-star-ratings";
 import Link from "next/link";
 import { addToCart } from "@/lib/appwrite/actions/shopping-cart.actions";
-import ButtonLoader from "../buttons/button-loader";
+
 import { useState } from "react";
-import ProductPrice from "./product-price";
+
 import toast from "react-hot-toast";
+import Chip from "@/components/atoms/chip/chip";
+import ProductPrice from "./product-price";
+import ButtonLoader from "@/components/molecules/button-loader/button-loader";
 
 
 const ProductCard = (product: Partial<IProduct>) => {

@@ -1,5 +1,5 @@
 import Link from "next/link"
-import Icon from "../globals/icon"
+import Icon from "../icon/icon"
 
 const CartWidget = () => {
     return (

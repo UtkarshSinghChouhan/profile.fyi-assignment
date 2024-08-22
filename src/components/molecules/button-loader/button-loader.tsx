@@ -1,6 +1,7 @@
 import { IButtonLoader } from "@/models/interfaces"
-import Button from "./button"
-import Icon from "../globals/icon"
+import Button from "../../atoms/button/button"
+import Icon from "@/components/atoms/icon/icon"
+
 
 
 

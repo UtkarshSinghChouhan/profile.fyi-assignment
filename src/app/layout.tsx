@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 import ReduxProvider from "./_providers/redux-provider/redux-provider";
 import { cn } from "@/lib/utils";
-import Header from "@/components/globals/header";
+import Header from "@/components/organisms/header/header";
 import QueryProvider from "./_providers/query-provider/query-provider";
 import { inter } from "./font";
 import { Toaster } from "react-hot-toast";
-import ThemeSwitch from "@/components/globals/theme-switch";
+import ThemeSwitch from "@/components/atoms/theme-switch/theme-switch";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {
@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <ReduxProvider>
         <QueryProvider>
-          <Suspense>
+          {/* <Suspense> */}
             <body className={cn(inter.className, "relative dark:bg-pf-darktheme-bg-dark flex flex-col min-h-screen min-w-screen custom-scroller")}>
               <Header />
 
@@ -46,7 +46,7 @@ export default function RootLayout({
 
             </body>
 
-          </Suspense>
+          {/* </Suspense> */}
         </QueryProvider>
       </ReduxProvider>
     </html>
