@@ -11,7 +11,7 @@ const Button = forwardRef<HTMLButtonElement, IButton>(
       onClick,
       isSubmit = false,
       disabled = false,
-      variant,
+      variant, 
       padding = 2.5,
       size = 'full',
       weight = 'normal',
