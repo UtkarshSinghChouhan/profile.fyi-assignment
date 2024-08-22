@@ -1,7 +1,7 @@
 'use server'
 
 import Image from "next/image"
-import { getImage } from "@/lib/image-utils"
+// import { getImage } from "@/lib/image-utils"
 import { ImageProps } from "next/image";
 import { cn } from "@/lib/utils";
 
@@ -13,7 +13,7 @@ const DynamicImage = async({className, ...rest} : IDynamicImage) => {
 
     try {
         const {src} = rest as ImageProps
-        const { base64 } = await getImage(src as string);
+        // const { base64 } = await getImage(src as string);
 
 
         return (
@@ -25,7 +25,7 @@ const DynamicImage = async({className, ...rest} : IDynamicImage) => {
                     fill 
                     loading="lazy" 
                     placeholder="blur"
-                    blurDataURL={base64}
+                    // blurDataURL={base64}
                 />
             </div>
         );
